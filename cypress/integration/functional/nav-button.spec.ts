@@ -3,7 +3,7 @@
 describe('nav-button', () => {
   beforeEach(() => {
     cy.viewport(1200, 1600)
-    cy.visit('http://localhost:8080/nav-button')
+    cy.visit('http://localhost:3000/nav-button')
   })
 
   it('button-true: should have next but not prev but later have next', () => {
@@ -33,11 +33,11 @@ describe('nav-button', () => {
     cy.get('.button-replaced .v-hl-btn-prev').should('not.exist');
     cy.get('.button-replaced .v-hl-btn-next').should('exist');
 
-    cy.get('.button-replaced .v-hl-btn-next').click()
+    cy.get('.button-replaced .replaced-next').click()
     cy.get('.button-replaced .v-hl-btn-prev').should('exist');
     cy.get('.button-replaced .v-hl-btn-next').should('exist');
 
-    cy.get('.button-replaced .v-hl-btn-prev').click()
+    cy.get('.button-replaced .replaced-prev').click()
     cy.get('.button-replaced .v-hl-btn-prev').should('not.exist');
     cy.get('.button-replaced .v-hl-btn-next').should('exist');
   });

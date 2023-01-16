@@ -2,10 +2,7 @@
   <div>
     <VueHorizontal>
       <section v-for="item in items" :key="item.i" class="responsive">
-        <div class="header">
-          <h6>{{ item.i }}</h6>
-          <h3>{{ item.title }}</h3>
-        </div>
+        <h3>{{ item.title }}</h3>
         <p>{{ item.content }}</p>
       </section>
     </VueHorizontal>
@@ -14,21 +11,20 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
+import {items} from './utils'
 import VueHorizontal from '@/VueHorizontal';
-import {Lorem} from './utils'
 
 export default defineComponent({
   components: {
     VueHorizontal
   },
-  data() {
-    const lorem = Lorem("responsive")
+  setup() {
     return {
-      items: [...Array(20).keys()].map((i) => {
+      items: items(20, (i) => {
         return {
           i,
-          title: lorem.generateWords(1),
-          content: lorem.generateWords(6),
+          title: `第 ${i}`,
+          content: `你好，给这个程序一个兴`,
         };
       }),
     }
@@ -41,23 +37,6 @@ section {
   padding: 16px 24px;
   border-radius: 4px;
   background: #f5f5f5;
-}
-
-.header {
-  display: flex;
-}
-
-.header h6 {
-  flex-shrink: 0;
-  background: #0000db;
-  font-size: 14px;
-  color: white;
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  line-height: 24px;
-  border-radius: 12px;
-  margin-right: 12px;
 }
 </style>
 
@@ -95,4 +74,3 @@ section {
   }
 }
 </style>
-
