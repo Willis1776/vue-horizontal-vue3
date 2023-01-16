@@ -57,7 +57,7 @@ export default defineComponent({
   mounted() {
     this.onScrollDebounce();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearTimeout(this.debounceId)
   },
   methods: {
